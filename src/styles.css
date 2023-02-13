@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.required
+{
+    color: red;
+    font-style: bold;
+    margin: 2%;
+    text-align: left;
+}
+.validation
+{
+    color: red;
+    font-style: bold;
+    margin: 5%;
+}

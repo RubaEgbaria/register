@@ -1,0 +1,31 @@
+.header
+{
+    background-color: white;
+    padding:2rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(44, 44, 44, 0.2);
+    width: 90%;
+    margin: 1%;
+    height: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.button
+{
+    box-shadow: 0 10px 25px rgba(44, 44, 44, 0.2);
+
+    display: inline-block;
+    /* margin: 1.5%; */
+    padding:.75rem 2rem;
+    outline:none;
+    border:none;
+    background-color:#E09167;
+    color: #fff;
+    border-radius: .5rem;
+    cursor: pointer;
+    /* transition: .3s; */
+    width:15%;
+    /* position: absolute; */
+    margin-left: 24%;
+    
+}

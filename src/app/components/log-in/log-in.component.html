@@ -1,0 +1,77 @@
+<html>
+    <header>
+    </header>
+    <body>
+        <div class="l-form">
+        <form (ngSubmit)="submit()" [formGroup] = "signInForm"  class="form">
+            <p class="form__hello"> Welcome Back!!!</p>
+            <h1 class="form__title"> Login</h1>
+            <!-- {{ signUpForm.value.name | json }} -->
+            <!-- email -->
+            <div *ngIf="!signInForm.get('email')?.valid  && 
+            (signInForm.get('email')?.dirty && signInForm.get('email')?.touched)" class="required"> * </div>
+            <div class="form_div">
+            <input class="form__input" type="text" 
+             name = 'email' 
+             email
+             formControlName="email"
+             >
+            <label for="" class="form__label">Username/Email</label>
+        </div>
+        <div *ngIf="signInForm.get('email')?.touched
+         && ((!signInForm.get('email')?.valid || (value.email?.errors)))"
+        class="validation"> Email not valid </div>
+
+            <!-- password -->
+            <div 
+            *ngIf="!signInForm.get('password')?.valid  &&
+             (signInForm.get('password')?.dirty && 
+             signInForm.get('password')?.touched)" class="required"> * </div>
+            <div class="form_div">
+
+            <input 
+             class="form__input" 
+             type="password"
+             name = 'password' 
+             formControlName="password"
+
+            >
+             <label for="" class="form__label"> Password </label>
+             </div>
+             <!-- checkbox -->
+             <div class="inlineDisplay">
+             <div class="box">
+                <input type="checkbox" id="scales" name="scales" unchecked>
+                <label for="rememberMe">Remember me </label>
+                <span class="forgotPass">Forgot Password ? </span>
+              </div>
+            </div>
+              <br>
+
+             <!-- submit -->
+            <button
+            class="form__button"
+            type="submit"
+            [disabled]="!signInForm.valid "
+            (click)="submit()"
+        >
+            Login
+        </button>   
+        <br>
+        <p> {{ signInForm.valid }} </p>
+        <p class="form__paragraph"> Don't have an account ? <span (click)="navigate()"> Register </span></p> 
+        <!-- icons -->
+        <div>
+        <a href="https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1">
+        <img class="icons" src="https://cdn-icons-png.flaticon.com/512/300/300221.png" /></a>
+        <a href="https://www.facebook.com/">
+        <img class='icons' src="https://cdn-icons-png.flaticon.com/512/174/174848.png" /></a>
+        <a href="https://appleid.apple.com/#!&page=signin">
+        <img class="icons" src="https://cdn-icons-png.flaticon.com/512/0/747.png"/></a>
+        </div>
+        <br><br><br><br><br><br>
+     </form>
+          </div>
+          <router-outlet></router-outlet>
+    </body>
+</html> 

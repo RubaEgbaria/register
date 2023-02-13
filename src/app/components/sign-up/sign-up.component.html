@@ -1,0 +1,117 @@
+<html>
+    <header>
+    </header>
+    <body>
+        <!--  Template-driven form -->
+        <div class="l-form">
+        <form [formGroup] = "signUpForm" (ngSubmit)="submit()" class="form">
+            <p class="form__hello"> Hello..</p>
+            <h1 class="form__title"> Register</h1>
+
+
+            <!-- email -->
+            <div *ngIf="signUpForm.get('email')?.touched  &&
+            (signUpForm.get('email')?.dirty || 
+            !signUpForm.get('email')?.valid)" class="required"> * </div>
+
+            <div class="form_div">
+            <input class="form__input" type="text" 
+            required="true"
+             name = 'email' 
+             email
+             formControlName="email"
+
+            >
+            <label for="email" class="form__label">Username/Email</label>
+        </div>
+        <div *ngIf="signUpForm.get('email')?.touched && (!signUpForm.get('email')?.valid || 
+        (value.email?.errors))"
+        class="validation"> Email not valid </div>
+            <!-- full name -->
+            <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="required"> *</div> -->
+            <div 
+            *ngIf="signUpForm.get('name')?.touched  && 
+            (signUpForm.get('name')?.dirty || 
+            !signUpForm.get('name')?.valid)" 
+            class="required"> * </div>
+
+            <div class="form_div">
+            <input class="form__input" type="text"
+             required="true"
+             name = 'name' 
+             name
+             pattern="[a-zA-Z ]*"
+             formControlName="name"
+            >
+             <label for="" class="form__label"> Full Name</label>
+             </div>
+             <div *ngIf="signUpForm.get('name')?.touched && (!signUpForm.get('name')?.valid ||
+              signUpForm.get('name')?.errors?.['minlength'])" 
+             class="validation"> Name not valid</div>
+
+
+            <!-- password -->
+            <div *ngIf="signUpForm.get('password1')?.touched  && 
+            (signUpForm.get('password1')?.dirty || 
+            !signUpForm.get('password1')?.valid)" 
+            class="required"> * </div>
+            <div class="form_div">
+            <input class="form__input" type="password"
+            required="true"
+            name = 'password1' 
+            formControlName="password1"
+            >
+             <label for="" class="form__label"> Password </label>
+             </div>
+
+
+            <!-- confirm password -->
+            <div *ngIf="signUpForm.get('password2')?.touched && 
+            (signUpForm.get('password2')?.dirty ||
+            !signUpForm.get('password2')?.valid )"
+             class="required"> * </div>
+            <div class="form_div">
+            <input class="form__input" 
+            required="true"
+            type="password" 
+            name = 'password2'
+            formControlName = "password2">
+
+            <label for="" class="form__label"> Confirm Password</label>
+            </div>
+            <div class="validation" *ngIf=" signUpForm.get('password2')?.touched &&
+          (  signUpForm.get('password2')?.invalid || 
+             signUpForm.get('password2')?.errors?.['identityRevealed'] || 
+             signUpForm.value.password1!=signUpForm.value.password2 )">
+                Password can not be confirmed
+            </div>
+
+       
+
+            <button
+            class="form__button"
+            type="submit"
+            [disabled]="!signUpForm.valid "
+            (click)="submit()"
+        >
+            Submit
+        </button>   
+        <br>
+        <p class="form__paragraph"> Already have an account ? <span (click)="navigate()"> Log in </span></p> 
+
+        <!-- icons -->
+        <div>
+        <a href="https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1">
+        <img class="icons" src="https://cdn-icons-png.flaticon.com/512/300/300221.png" /></a>
+        <a href="https://www.facebook.com/">
+        <img class='icons' src="https://cdn-icons-png.flaticon.com/512/174/174848.png" /></a>
+        <a href="https://appleid.apple.com/#!&page=signin">
+        <img class="icons" src="https://cdn-icons-png.flaticon.com/512/0/747.png"/></a>
+        </div>
+
+     </form>
+          </div>
+          <router-outlet></router-outlet>
+    </body>
+</html> 
